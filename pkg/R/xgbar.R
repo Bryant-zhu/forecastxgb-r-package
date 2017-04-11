@@ -203,7 +203,7 @@ xgbar <- function(y, xreg = NULL, maxlag = max(8, 2 * frequency(y)), nrounds = 1
   }  
   
   if(verbose){message("Fitting xgboost model")}
-  model <- xgboost(data = x, label = y2, nrounds = nrounds_use, verbose = verbose)
+  model <- xgboost(data = x, label = y2, nrounds = nrounds_use, verbose = verbose,save_period = NULL)
   
   fitted <- ts(c(rep(NA, maxlag), 
                  predict(model, newdata = x)), 
@@ -271,4 +271,6 @@ xgbts <- function(...){
 Please use xgbar instead.")
   xgbar(...)
 }
+
+
 
