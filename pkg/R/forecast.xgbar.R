@@ -118,13 +118,14 @@ forecast.xgbar <- function(object,
   
   x <- object$x
   y <- object$y2
-
+   newnew<-0
   for(i in 1:h){
     tmp <- forward1(x, y, model = object$model, xregpred = xreg3[i, ], i = i)  
     x <- tmp$x
     y <- tmp$y
+     newnew<-tmp$newnew
   }
-  newnew<-tmp$newnew
+ 
   
   # fitted and forecast object, on possibly untransformed, undifferenced and seasonally adjusted scale
   y <- ts(y[-(1:length(object$y2))],
