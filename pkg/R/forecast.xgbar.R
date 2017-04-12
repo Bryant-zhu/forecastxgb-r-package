@@ -1,4 +1,4 @@
-#' Forecasting using xgboost models
+ #' Forecasting using xgboost models
 #' 
 #' Returns forecasts and other information for xgboost timeseries modesl fit with \code{xbgts}
 #' 
@@ -108,10 +108,11 @@ forecast.xgbar <- function(object,
     colnames(newrow) <- colnames(x)
     
     pred <- predict(model, newdata = newrow)
+    
     return(list(
       x = rbind(x, newrow),
-      y = c(y, pred),
-      newnew=newrow
+      y = c(y, pred)
+      newnew = newrow
     ))
   }
   
@@ -122,8 +123,8 @@ forecast.xgbar <- function(object,
     tmp <- forward1(x, y, model = object$model, xregpred = xreg3[i, ], i = i)  
     x <- tmp$x
     y <- tmp$y
-    newnew<-tmp$newnew
   }
+  newnew<-tmp$newnew
   
   # fitted and forecast object, on possibly untransformed, undifferenced and seasonally adjusted scale
   y <- ts(y[-(1:length(object$y2))],
@@ -156,7 +157,7 @@ forecast.xgbar <- function(object,
     fitted = object$fitted,
     newx = x,
     method = object$method
-    newrow=newnew
+    newnew=newnew
   )
   class(output) <- "forecast"
   return(output)
