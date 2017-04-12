@@ -108,7 +108,7 @@ forecast.xgbar <- function(object,
     colnames(newrow) <- colnames(x)
     
     pred <- predict(model, newdata = newrow)
-    
+    newnew=newrow
     return(list(
       x = rbind(x, newrow),
       y = c(y, pred)
